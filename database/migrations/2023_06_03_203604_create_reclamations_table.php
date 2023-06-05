@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('reclamations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained()->ondelete('cascade');
-            $table->foreignId('administrateur_id')->constrained()->ondelete('cascade');
-            $table->foreignId('dispositif_id')->constrained()->ondelete('cascade');
             $table->mediumtext('objet_reclamation');
             $table->mediumtext('description_reclamation');
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('dispositif_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
+        
     }
 
     /**

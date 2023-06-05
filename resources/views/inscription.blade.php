@@ -25,6 +25,21 @@
                                 </div>
                             </div>
 
+
+                            <div class="form-group row">
+                                <label for="prenom" class="col-md-4 col-form-label text-md-right">{{ __('Prenom') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="prenom" type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>
+
+                                    @error('prenom')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adresse e-mail') }}</label>
 
@@ -40,12 +55,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
+                                <label for="password_admin" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password_admin" type="password" class="form-control @error('password_admin') is-invalid @enderror" name="password_admin" required autocomplete="new-password">
 
-                                    @error('password')
+                                    @error('password_admin')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

@@ -19,9 +19,6 @@ return new class extends Migration
             $table->timestamps();
         
             $table->primary(['client_id', 'culture_id']);
-        
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
         });
         
     }

@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('marketplaces', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_marketplace');
+            $table->unsignedBigInteger('step_id');
+            $table->string('nom_tache');
+            $table->mediumtext('description_tache');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marketplaces');
+        Schema::dropIfExists('tasks');
     }
 };

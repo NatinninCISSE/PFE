@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamps();
+            $table->string('nom_client');
+            $table->string('prenom_client');
+            $table->string('numero_client',15);
+            $table->string('adresse_client');
+            $table->string('password_client');
+            $table->string('mail_client')->unique();
+            $table->foreignId('dispositif_id')->constrained()->onDelete('cascade');
+            
         });
     }
     /**

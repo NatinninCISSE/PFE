@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dispositifs', function (Blueprint $table) {
+        Schema::create('poissons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained()->ondelete('cascade');
-            $table->mediumtext('description_dispositif');
+            $table->string('nom_poisson');
+            $table->mediumtext('description_poisson');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dispositifs');
+        Schema::dropIfExists('poissons');
     }
 };

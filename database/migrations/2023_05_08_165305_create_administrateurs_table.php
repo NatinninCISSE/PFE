@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nom_admin');
             $table->string('prenom_admin');
             $table->string('email_admin')->unique();
+            $table->string('password_admin')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });

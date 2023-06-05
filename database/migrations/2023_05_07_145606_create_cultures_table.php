@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('cultures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('marketplace_id')->constrained()->ondelete('cascade');
             $table->string('nom_culture');
-            $table->mediumtext('Description_culture');
+            $table->mediumtext('description_culture');
             $table->timestamps();
         });
     }

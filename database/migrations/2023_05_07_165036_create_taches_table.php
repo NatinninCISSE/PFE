@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('taches', function (Blueprint $table) {
             $table->id();
-            $table->string('titre_tache');
+            $table->unsignedBigInteger('etape_id');
+            $table->string('nom_tache');
             $table->mediumtext('description_tache');
             $table->timestamps();
         });

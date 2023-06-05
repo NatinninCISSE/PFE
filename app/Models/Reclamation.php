@@ -9,17 +9,14 @@ class Reclamation extends Model
 {
     use HasFactory;
 
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
+    protected $fillable = ['client_id','objet_reclamation', 'description_reclamation'];
 
     public function administrateur()
     {
         return $this->belongsTo(administrateur::class);
     }
 
-    public function dispositif()
+    public function client()
     {
         return $this->belongsTo(Dispositif::class);
     }

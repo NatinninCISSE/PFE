@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('etapes', function (Blueprint $table) {
             $table->id();
-            $table->string('titre_tache');
-            $table->mediumtext('description_tache');
+            $table->unsignedBigInteger('culture_id');
+            $table->string('nom_etape');
+            $table->text('description_etape');
+            $table->date('date_debut_etape');
+            $table->date('date_fin_etape');
+            $table->unsignedInteger('duree_etape')->nullable();
+            $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
             $table->timestamps();
         });
     }

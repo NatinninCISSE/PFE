@@ -10,16 +10,20 @@ class Dispositif extends Model
     use HasFactory;
 
 
-    protected $fillable = ['nom_dispositif', 'description_dipositif'];
-    
+    protected $fillable = ['nom_dispositif', 'description_dispositif'];
 
     public function reclamations(){
-        return $this->hasMany(Reclamations::class);
+        return $this->hasMany(Reclamation::class);
     }
 
     public function cultures()
     {
         return $this->belongsToMany(Culture::class, 'culture_dispositif');
+    }
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
     }
 
 }

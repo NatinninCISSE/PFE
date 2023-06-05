@@ -19,14 +19,8 @@ class Culture extends Model
 
 public function etapes()
 {
-    return $this->belongsToMany(Etape::class);
+    return $this->hasMany(Etape::class);
 }
-
-    public function marketplace()
-    {
-        return $this->belongsTo(Marketplace::class);
-    }
-
     public function clients()
     {
         return $this->belongsToMany(Client::class, 'client_culture');

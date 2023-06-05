@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tache extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['etape_id','nom_tache','description_tache'];
 
     public function cultures()
     {
@@ -16,6 +18,6 @@ class Tache extends Model
 
     public function etapes()
     {
-        return $this->belongsToMany(etape::class);
+        return $this->belongsTo(etape::class);
     }
 }

@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('utilisateurs', function (Blueprint $table) {
+        Schema::create('dispositifs', function (Blueprint $table) {
             $table->id();
+            $table->mediumtext('nom_dispositif');
+            $table->text('description_dispositif');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utilisateurs');
+        Schema::dropIfExists('dispositifs');
     }
 };
