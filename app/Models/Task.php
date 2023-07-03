@@ -9,7 +9,7 @@ class Tache extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['step_id','nom_tache','description_tache'];
+    protected $fillable = ['step_id','nom_tache','description_tache','image_task'];
 
     public function cultures()
     {

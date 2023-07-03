@@ -22,7 +22,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
 /* =============== Globals ============== */
-* {
+{
   font-family: "Ubuntu", sans-serif;
   margin: 0;
   padding: 0;
@@ -282,10 +282,10 @@ body {
 /* ================== Order Details List ============== */
 .details {
   position: relative;
-  width: 90%;
-  padding: 5%;
+  width: 100%;
+  padding: 0%;
   display: grid;
-  margin-top: 0%;
+  margin-top: 7%;
   grid-template-columns: 2fr 1fr;
   grid-gap: 0px;
   /* margin-top: 10px; */
@@ -296,7 +296,7 @@ body {
   display: grid;
   min-height: 500px;
   background: var(--white);
-  padding: 140px;
+  padding: 25px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
@@ -310,15 +310,15 @@ body {
 .cardHeader h2 {
   font-weight: 600;
   
-  margin-top: -5%;
-  margin-left: -10%;
+  margin-top: 5%;
+  margin-left: 10%;
   color: var(--blue);
 }
 .cardHeader .btn {
   position: relative;
   padding: 5px 10px;
-  margin-right: -7%;
-  margin-top: -5%;
+  margin-right: 15%;
+  margin-top: 5%;
   background: var(--blue);
   text-decoration: none;
   color: var(--white);
@@ -326,10 +326,10 @@ body {
 }
 
 .details table {
-  width: 150%;
-  margin-left: -26%;
+  width: 100%;
+  margin-left: 0%;
   border-collapse: collapse;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .details table thead td {
   font-weight: 600;
@@ -341,12 +341,12 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
 .details .recentOrders table tr td {
-  padding: 25px;
+  padding: 38px;
 }
 
 .status.delivered {
@@ -519,6 +519,7 @@ form {
   background: var(--white);
  }
 
+
  .supprime{
 
 width:0%;
@@ -527,6 +528,7 @@ border: none;
 background: none;
 
 }
+
 
 
  #container h1{
@@ -746,6 +748,7 @@ input[type=text], input[type=password] {
                                 <td>Identifiant</td>
                                 <td>Nom</td>
                                 <td>Description</td>
+                                <td>Image</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -755,6 +758,7 @@ input[type=text], input[type=password] {
                                 <td>{{ $task->id }}</td>
                                 <td>{{ $task->nom_tache }}</td>
                                 <td>{{ $task->description_tache }}</td>
+                                <td><img src="{{ env('URL_APP').$culture->image_culture }}" width="100px" height="100px"></td>
                                 <td class="bouton">
                                   
                                   <a href="{{ route('tasks.details_task', $task->id) }}" class="btn-voir" class="bouton"><ion-icon name="eye-outline"></ion-icon></a>

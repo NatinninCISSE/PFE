@@ -334,7 +334,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -747,9 +747,12 @@ input[type=text], input[type=password] {
                 <div class="recentOrders">
 
                     <div class="container1">
-                      <h4>Nom du poisson :  <span class="h4">{{  $poisson->nom_poisson }}</span></h4>
+                      <h4> <span class="h4"> Nom du poisson : </span> {{  $poisson->nom_poisson }}</h4>
 
-                      <h4>Description du poisson : <span class="h4">{{ $poisson->description_poisson }}</span></h4>
+                      <h4> <span class="h4"> Description du poisson : </span> {{ $poisson->description_poisson }}</h4>
+                      <div>
+                          <img src="{{ env('URL_APP').$poisson->image_poisson }}" width="100px" height="100px">
+                      </div>
 
                       <h2>Étapes du poisson </h2>
 
@@ -771,6 +774,7 @@ input[type=text], input[type=password] {
                                 <td>{{ $step->id }}</td>
                                 <td>{{ $step->nom_etape }}</td>
                                 <td>{{ $step->description_etape }}</td>
+                                
                                 <td class="bouton">
                                   
                                   <a href="{{ route('steps.details_step', $step->id) }}" class="btn-voir" class="bouton"><ion-icon name="eye-outline"></ion-icon></a>
@@ -793,7 +797,7 @@ input[type=text], input[type=password] {
 
                     <div class="cardHeader">
                         <a href="{{ route('steps.creer_step',$poisson->id) }}" class="btn btn-primary mb-3">Ajouter une etape</a>
-                    <a href="{{ route('poissons') }}" class="btn btn-danger">Retour</a>
+                    <a href="{{ route('poissons') }}" class="btn btn-danger" color= "red">Retour</a>
                     </div>
 
                 </div>

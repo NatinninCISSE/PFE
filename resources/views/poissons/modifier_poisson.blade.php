@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -736,7 +736,7 @@ input[type=text], input[type=password] {
                 <h1>Modifier la poisson</h1>
                 <hr>
                 <center>
-                <form class="form-group" method="POST" action="/poissons/{id}/modifier_poisson_traitement">
+                <form class="form-group" method="POST" enctype="multipart/form-data" action="/poissons/{id}/modifier_poisson_traitement">
                     @csrf
 
                     <input type="text" name="id" style="display:none;" value="{{$poissons->id}}">
@@ -750,7 +750,8 @@ input[type=text], input[type=password] {
                         <input type="text" class="form-control" id="description_poisson"name="description_poisson" value="{{$poissons->description_poisson}}">
                     
                     </div>
-                    <a href="#" class="btn-etape">Ajouter taches </a>
+                    
+                    <input type="file" name="image" value="{{$poissons->image_poisson}}" enctype="multipart/form-data">
                     <br>
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
                     

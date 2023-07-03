@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('step_id');
             $table->string('nom_tache');
             $table->mediumtext('description_tache');
+            $table->string('image_task');
             $table->timestamps();
         });
     }

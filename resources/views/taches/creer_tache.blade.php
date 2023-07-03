@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -721,7 +721,7 @@ input[type=text], input[type=password] {
             <!-- ================ Order Details List ================= -->
             <div class="container">
         <h1>Ajouter une tache à {{ $etape->nom_etape }}</h1>
-        <form action="{{ route('taches.store') }}" method="POST">
+        <form action="{{ route('taches.store') }}" enctype="multipart/form-data" method="POST">
         <div>
               
               @csrf
@@ -741,8 +741,9 @@ input[type=text], input[type=password] {
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
             </div>
+            <input type="file" name="image">
             <button type="submit" class="btn btn-success">Ajouter</button>
-                    <a href="{{ route('taches') }}" class="btn btn-danger">Retour</a>
+            <a href="{{ route('taches') }}" class="btn btn-danger">Retour</a>
         </form>
     </div>
     <!-- =========== Scripts =========  -->

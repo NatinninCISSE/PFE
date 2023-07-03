@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description_etape');
             $table->date('date_debut_etape');
             $table->date('date_fin_etape');
+            $table->string('image_step');
             $table->unsignedInteger('duree_etape')->nullable();
             $table->foreign('poisson_id')->references('id')->on('poissons')->onDelete('cascade');
             $table->timestamps();

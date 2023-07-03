@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description_etape');
             $table->date('date_debut_etape');
             $table->date('date_fin_etape');
+            $table->string('image_etape');
             $table->unsignedInteger('duree_etape')->nullable();
             $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
             $table->timestamps();

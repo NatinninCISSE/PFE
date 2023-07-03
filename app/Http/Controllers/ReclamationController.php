@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Reclamation;
-use App\Models\Dispositif;
+use App\Models\Client;
 
 class ReclamationController extends Controller
 {
@@ -20,12 +20,12 @@ class ReclamationController extends Controller
 
     public function creer_reclamation()
     {
-        $dispositif = new Dispositif;
+        $client = new Client;
         
-        $reclamations = $dispositif->reclamations;
-        $dispositifs = Dispositif::all();
+        $reclamations = $client->reclamations;
+        $clients = Client::all();
         
-        return view('reclamations.creer_reclamation', compact('reclamations','dispositifs'));
+        return view('reclamations.creer_reclamation', compact('reclamations','clients'));
     }
 
 
@@ -33,14 +33,14 @@ class ReclamationController extends Controller
     {
         $request->validate([
             
-            'dispositif' => 'required',
+            'client' => 'required',
             'objet_reclamation' => 'required',
             'description_reclamation' => 'required',
         ]);
 
         $reclamation = Reclamation::create([
             
-            'dispositif_id' => $request->dispositif,
+            'client_id' => $request->client,
             'objet_reclamation' => $request->objet_reclamation,
             'description_reclamation' => $request->description_reclamation,
         ]);
@@ -54,7 +54,7 @@ class ReclamationController extends Controller
     {
         $reclamation = Reclamation::findOrFail($id);
         
-        $dispositif = Dispositif::with('reclamations')->findOrFail($id);
+        $client = Client::with('reclamations')->findOrFail($id);
         return view('reclamations.details_reclamation', compact('reclamation'));
     }
     
@@ -72,18 +72,19 @@ class ReclamationController extends Controller
     public function modifier_reclamation($id){
 
         $reclamations = Reclamation::find($id);
-        return view('reclamations.modifier_reclamation', compact('reclamations'));
+        $clients = Client::all();
+        return view('reclamations.modifier_reclamation', compact('reclamations','clients'));
        }
     
        public function modifier_reclamation_traitement(Request $request, $id){
             $request->validate([
-                'dispositif' => 'required',
+                'client' => 'required',
                 'objet_reclamation'=>'required|max:20',
                 'description_reclamation'=>'required|max:200',
             ]);
             $reclamation = Reclamation::find($request->id);
             
-            $reclamation->dispositif_id = $request->input('reclamation');
+            $reclamation->client_id = $request->input('reclamation');
             $reclamation->objet_reclamation = $request->input('objet_reclamation');
             $reclamation->description_reclamation = $request->input('description_reclamation');
             $reclamation->save();

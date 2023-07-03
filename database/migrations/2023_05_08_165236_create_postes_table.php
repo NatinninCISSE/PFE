@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('postes', function (Blueprint $table) {
             $table->id();
             $table->mediumtext('contenu_poste');
+            $table->string('image_poste');
             $table->timestamps();
+            $table->foreignId('client_id')->constrained()->onDelete('cascade');
         });
     }
 

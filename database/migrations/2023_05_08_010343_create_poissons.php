@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom_poisson');
             $table->mediumtext('description_poisson');
+            $table->string('image_poisson');
             $table->timestamps();
         });
     }

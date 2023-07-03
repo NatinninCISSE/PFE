@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -719,7 +719,7 @@ input[type=text], input[type=password] {
             <div class="container">
         <h1>Ajouter une etape</h1>
 
-        <form action="{{ route('steps.store') }}" method="POST">
+        <form action="{{ route('steps.store') }}" enctype="multipart/form-data" method="POST">
             <div>
               
             @csrf
@@ -751,6 +751,7 @@ input[type=text], input[type=password] {
                 <label for="duree_etape">Durée</label>
                 <input type="text" class="form-control" id="duree_etape" name="duree_etape" value="{{ old('duree_etape') }}">
             </div>
+            <input type="file" name="image">
             <button type="submit" class="btn btn-success">Ajouter</button>
                     <a href="{{ route('steps') }}" class="btn btn-danger">Retour</a>
         </form>

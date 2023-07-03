@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->mediumtext('nom_dispositif');
             $table->text('description_dispositif');
+            $table->string('image_dispositif');
             $table->timestamps();
         });
     }

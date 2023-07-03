@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Etape extends Model
 {
     use HasFactory;
-    protected $fillable = ['culture_id','poisson_id','nom_etape','description_etape','date_debut_etape','date_fin_etape','duree_etape'];
+    protected $fillable = ['culture_id','poisson_id','nom_etape','description_etape','date_debut_etape','date_fin_etape','duree_etape', 'image_etape'];
     
     
     public function cultures()

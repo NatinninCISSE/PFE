@@ -18,7 +18,6 @@ return new class extends Migration
             $table->mediumtext('objet_reclamation');
             $table->mediumtext('description_reclamation');
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
-            $table->foreignId('dispositif_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
         

@@ -9,8 +9,11 @@ class Poste extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['client_id','contenu_poste','image_poste'];
+
+
     public function clients()
     {
-        return $this->belongsTo(client::class, 'poste_client');
+        return $this->belongsTo(Client::class);
     }
 }

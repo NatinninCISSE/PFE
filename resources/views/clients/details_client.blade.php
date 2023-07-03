@@ -341,10 +341,10 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/* / {
   background: var(--blue2);
   color: var(--white);
-}
+} */
 .details .recentOrders table tr td {
   padding: 25px;
 }
@@ -724,6 +724,10 @@ input[type=text], input[type=password] {
 
     <div class="container">
         <h1>Détails du client</h1>
+        
+        <div>
+            <img src="{{ env('URL_APP').$client->image_client }}" width="100px" height="100px">
+        </div>
         <p><strong>Nom :</strong> {{ $client->nom_client }}</p>
         <p><strong>Prenom :</strong> {{ $client->prenom_client }}</p>
         <p><strong>Numero :</strong> {{ $client->numero_client }}</p>

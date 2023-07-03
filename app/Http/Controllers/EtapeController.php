@@ -39,8 +39,19 @@ class EtapeController extends Controller
             'date_debut_etape' => 'required',
             'date_fin_etape' => 'required',
             'duree_etape' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', 
 
         ]);
+
+
+        if($request->hasfile('image'))
+        {
+            $file = $request->file("image");
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/etapes/', $filename);
+            $image ='uploads/etapes/' .$filename;
+        }
 
         $etape = Etape::create([
             'culture_id' => $request->culture,
@@ -49,6 +60,7 @@ class EtapeController extends Controller
             'date_debut_etape' => $request->date_debut_etape,
             'date_fin_etape' => $request->date_fin_etape,
             'duree_etape' => $request->duree_etape,
+            'image_etape' => $image,
         ]);
 
 

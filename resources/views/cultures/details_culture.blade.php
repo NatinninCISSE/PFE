@@ -334,7 +334,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -751,6 +751,11 @@ input[type=text], input[type=password] {
                       <div>
                         <h4><span class="h4">Description de la culture : </span>{{ $culture->description_culture }}</h4>
                       </div>
+                      <center>
+                      <div>
+                      <img src="{{ env('URL_APP').$culture->image_culture }}" width="100px" height="100px">
+                      </div>
+                      
 
                       
 

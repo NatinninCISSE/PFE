@@ -43,10 +43,6 @@ body {
   overflow-x: hidden;
 }
 
-.container {
-  position: relative;
-  width: 100%;
-}
 
 /* =============== Navigation ================ */
 .navigation {
@@ -282,8 +278,8 @@ body {
 /* ================== Order Details List ============== */
 .details {
   position: relative;
-  width: 90%;
-  padding: 5%;
+  width: 50%;
+  padding: 1%;
   display: grid;
   margin-top: 0%;
   grid-template-columns: 2fr 1fr;
@@ -296,7 +292,7 @@ body {
   display: grid;
   min-height: 500px;
   background: var(--white);
-  padding: 140px;
+  padding: 100px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
@@ -326,8 +322,8 @@ body {
 }
 
 .details table {
-  width: 150%;
-  margin-left: -26%;
+  width: 50%;
+  margin-left: -16%;
   border-collapse: collapse;
   margin-top: 10%;
 }
@@ -341,7 +337,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -742,7 +738,7 @@ input[type=text], input[type=password] {
                 </ul>
             </div>
         @endif
-        <form action="{{ route('cultures.store') }}" method="POST">
+        <form action="{{ route('cultures.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="nom">Nom</label>
@@ -752,6 +748,7 @@ input[type=text], input[type=password] {
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" name="description" placeholder="Entrez la description de la culture">{{ old('description') }}</textarea>
             </div>
+            <input type="file" name="image">
             <button type="submit" class="btn btn-success">Ajouter</button>
             <a href="{{ route('cultures') }}" class="btn btn-danger">Retour</a>
         </form>

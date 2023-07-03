@@ -8,11 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Conseil extends Model
 {
     use HasFactory;
-
-    public function cultures()
-{
-    return $this->belongsToMany(Culture::class);
-}
+    protected $fillable = ['dispositif_id','titre_conseil','description_conseil'];
 
 public function etapes()
 {

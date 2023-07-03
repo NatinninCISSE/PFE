@@ -22,7 +22,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
 /* =============== Globals ============== */
-* {
+{
   font-family: "Ubuntu", sans-serif;
   margin: 0;
   padding: 0;
@@ -296,7 +296,7 @@ body {
   display: grid;
   min-height: 500px;
   background: var(--white);
-  padding: 140px;
+  padding: 25px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
@@ -310,15 +310,15 @@ body {
 .cardHeader h2 {
   font-weight: 600;
   
-  margin-top: -5%;
-  margin-left: -15%;
+  margin-top: 5%;
+  margin-left: 10%;
   color: var(--blue);
 }
 .cardHeader .btn {
   position: relative;
   padding: 5px 10px;
-  margin-right: -5%;
-  margin-top: -5%;
+  margin-right: 15%;
+  margin-top: 5%;
   background: var(--blue);
   text-decoration: none;
   color: var(--white);
@@ -326,10 +326,10 @@ body {
 }
 
 .details table {
-  width: 120%;
-  margin-left: -20%;
+  width: 100%;
+  margin-left: 0%;
   border-collapse: collapse;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .details table thead td {
   font-weight: 600;
@@ -341,12 +341,12 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
 .details .recentOrders table tr td {
-  padding: 35px;
+  padding: 38px;
 }
 
 .status.delivered {
@@ -752,6 +752,7 @@ input[type=text], input[type=password] {
                                 <td>Nom</td>
                                 <td>Prenom</td>
                                 <td>Adresse</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
                         @foreach($clients as $client)
@@ -761,6 +762,7 @@ input[type=text], input[type=password] {
                                 <td>{{ $client->nom_client }}</td>
                                 <td>{{ $client->prenom_client }}</td>
                                 <td>{{ $client->adresse_client }}</td>
+                                <td><img src="{{ env('URL_APP').$client->image_client }}" width="100px" height="100px"></td>
                                 <td class="bouton">
                                   
                                   <a href="{{ route('clients.details_client', $client->id) }}" class="btn-voir" class="bouton"><ion-icon name="eye-outline"></ion-icon></a>

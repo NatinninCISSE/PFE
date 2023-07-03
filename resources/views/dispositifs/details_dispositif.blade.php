@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -724,6 +724,10 @@ input[type=text], input[type=password] {
 
     <div class="container">
         <h1>Détails du dispositif</h1>
+        
+        <div>
+            <img src="{{ env('URL_APP').$dispositif->image_dispositif }}" width="100px" height="100px">
+        </div>
         <p><strong>Nom :</strong> {{ $dispositif->nom_dispositif }}</p>
         <p><strong>Prenom :</strong> {{ $dispositif->description_dispositif }}</p>
         <!-- Autres champs à afficher -->

@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -725,7 +725,7 @@ input[type=text], input[type=password] {
                 <h1>Modifier l'etape</h1>
                 <hr>
                 <center>
-                <form class="form-group" method="POST" action="/etapes/{id}/modifier_etape_traitement">
+                <form class="form-group" method="POST" enctype="multipart/form-data" action="/etapes/{id}/modifier_etape_traitement">
                     @csrf
 
                     <input type="text" name="id" style="display:none;" value="{{$etapes->id}}">
@@ -739,6 +739,8 @@ input[type=text], input[type=password] {
                         <input type="text" class="form-control" id="description_etape"name="description_etape" value="{{$etapes->description_etape}}">
                     
                     </div>
+                    
+                    <input type="file" name="image" value="{{$etapes->image_etape}}" enctype="multipart/form-data">
                     <br>
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
                     

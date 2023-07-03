@@ -9,7 +9,7 @@ class Culture extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom_culture', 'description_culture'];
+    protected $fillable = ['nom_culture', 'description_culture','image_culture'];
 
     public function conseils()
 {

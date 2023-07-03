@@ -9,7 +9,7 @@ class Poisson extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom_poisson', 'description_poisson'];
+    protected $fillable = ['nom_poisson', 'description_poisson', 'image_poisson'];
 
     public function conseils()
 {

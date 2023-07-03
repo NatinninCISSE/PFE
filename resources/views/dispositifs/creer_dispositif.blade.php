@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -732,7 +732,7 @@ input[type=text], input[type=password] {
                 </ul>
             </div>
         @endif
-        <form action="{{ route('dispositifs.store') }}" method="POST">
+        <form action="{{ route('dispositifs.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="mb-3">
                 <label for="nom_dispositif" class="form-label">Nom</label>
@@ -744,6 +744,7 @@ input[type=text], input[type=password] {
                 <input type="text" class="form-control" id="description_dispositif"name="description_dispositif" placeholder="Entrez une description du dispositif">
                         
             </div>
+            <input type="file" name="image">
             <br>
             <button type="submit" class="btn btn-primary">Enregistrer</button>
             

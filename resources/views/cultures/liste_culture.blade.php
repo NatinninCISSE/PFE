@@ -282,7 +282,7 @@ body {
 /* ================== Order Details List ============== */
 .details {
   position: relative;
-  width: 100%;
+  width: 105%;
   padding: 0%;
   display: grid;
   margin-top: 7%;
@@ -296,7 +296,7 @@ body {
   display: grid;
   min-height: 500px;
   background: var(--white);
-  padding: 140px;
+  padding: 150px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
@@ -310,27 +310,29 @@ body {
 .cardHeader h2 {
   font-weight: 600;
   
-  margin-top: -5%;
-  margin-left: -15%;
+  margin-top: -6%;
+  margin-left: 10%;
   color: var(--blue);
 }
 .cardHeader .btn {
   position: relative;
   padding: 5px 10px;
-  margin-right: -15%;
-  margin-top: -5%;
+  margin-right: 15%;
+  margin-top: -6%;
   background: var(--blue);
   text-decoration: none;
   color: var(--white);
   border-radius: 6px;
 }
 
+
 .details table {
-  width: 140%;
-  margin-left: -20%;
+  width: 150%;
+  margin-left: -26%;
   border-collapse: collapse;
-  margin-top: 10%;
+  margin-top: 7%;
 }
+
 .details table thead td {
   font-weight: 600;
 }
@@ -341,12 +343,12 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
 .details .recentOrders table tr td {
-  padding: 35px;
+  padding: 18px;
 }
 
 .status.delivered {
@@ -662,7 +664,6 @@ input[type=text], input[type=password] {
                     </a>
                 </li>
 
-
                 <li>
                     <a href="{{ route('reclamations') }}">
                         <span class="icon">
@@ -673,7 +674,7 @@ input[type=text], input[type=password] {
                 </li>
 
                 <li>
-                    <a href="{{ route('cultures') }}">
+                    <a href="{{ route('cultures')}}">
                         <span class="icon">
                         <ion-icon name="leaf"></ion-icon>                            
                         </span>
@@ -701,7 +702,7 @@ input[type=text], input[type=password] {
 
                 <li>
                     <a href="/">
-                        <span class="icon">
+                        <span cl!ass="icon">
                             <ion-icon name="bar-chart-outline"></ion-icon>
                         </span>
                         <span class="title">Statistiques</span>
@@ -751,6 +752,7 @@ input[type=text], input[type=password] {
                                 <td>Identifiant</td>
                                 <td>Nom</td>
                                 <td>Description</td>
+                                <td>Image</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -760,6 +762,9 @@ input[type=text], input[type=password] {
                                 <td>{{ $culture->id }}</td>
                                 <td>{{ $culture->nom_culture }}</td>
                                 <td>{{ $culture->description_culture }}</td>
+                                <td><img src="{{ env('URL_APP').$culture->image_culture }}" width="100px" height="100px"></td>
+                                
+
                                 <td class="bouton">
                                   
                                   <a href="{{ route('cultures.details_culture', $culture->id) }}" class="btn-voir" class="bouton"><ion-icon name="eye-outline"></ion-icon></a>

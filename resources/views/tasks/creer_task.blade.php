@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -726,7 +726,7 @@ input[type=text], input[type=password] {
                 <h1>Modifier la tache</h1>
                 <hr>
                 <center>
-                <form class="form-group" method="POST" action="/tasks/{id}/modifier_task_traitement">
+                <form class="form-group" method="POST" enctype="multipart/form-data" action="/tasks/{id}/modifier_task_traitement">
                     @csrf
 
                     <input type="text" name="id" style="display:none;" value="{{$tasks->id}}">
@@ -740,6 +740,7 @@ input[type=text], input[type=password] {
                         <input type="text" class="form-control" id="description_tache"name="description_tache" value="{{$tasks->description_tache}}">
                     
                     </div>
+                    <input type="file" name="image">
                     <a href="#" class="btn-etape">Ajouter taches </a>
                     <br>
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>

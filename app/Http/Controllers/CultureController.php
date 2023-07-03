@@ -24,7 +24,11 @@ class CultureController extends Controller
         return view('cultures.creer_culture', compact('etapes'));
     }
 
-
+    
+    public function liste_culture_api()
+    {
+        return json_encode(Culture::all());
+    }
 
 
     public function store(Request $request)
@@ -32,14 +36,24 @@ class CultureController extends Controller
         $request->validate([
             'nom' => 'required',
             'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', 
         ]);
-
+    
+        if($request->hasfile('image'))
+        {
+            $file = $request->file("image");
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/cultures/', $filename);
+            $image ='uploads/cultures/' .$filename;
+        }
+    
         $culture = Culture::create([
             'nom_culture' => $request->nom,
             'description_culture' => $request->description,
+            'image_culture' => $image, // Enregistrement du chemin de l'image
         ]);
-
-
+    
         return redirect()->route('cultures', $culture->id)->with('success', 'Culture ajoutée avec succès!');
     }
 
@@ -79,11 +93,22 @@ class CultureController extends Controller
             $request->validate([
                 'nom_culture'=>'required|max:20',
                 'description_culture'=>'required|max:200',
+                'image_culture' => 'required|image|mimes:jpeg,png,jpg,gif',
             ]);
+
+            if($request->hasfile('image'))
+        {
+            $file = $request->file("image");
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/cultures/', $filename);
+            $image ='uploads/cultures/' .$filename;
+        }
             $culture = Culture::find($request->id);
             
             $culture->nom_culture = $request->input('nom_culture');
             $culture->description_culture = $request->input('description_culture');
+            $culture->image_culture = $request->input('image_culture');
             $culture->save();
             return redirect()->route('cultures', $culture->id)->with('status', 'Modification effectuée avec succès');
 

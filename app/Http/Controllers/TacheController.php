@@ -35,12 +35,27 @@ class TacheController extends Controller
             'etape'=> 'required',
             'nom' => 'required',
             'description' => 'required',
+            
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', 
+
         ]);
+
+
+        if($request->hasfile('image'))
+        {
+            $file = $request->file("image");
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/taches/', $filename);
+            $image ='uploads/taches/' .$filename;
+        }
+
 
         $tache = Tache::create([
             'etape_id' => $request->etape,
             'nom_tache' => $request->nom,
             'description_tache' => $request->description,
+            'image_tache' => $image,
         ]);
 
 

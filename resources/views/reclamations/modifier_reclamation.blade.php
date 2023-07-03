@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -732,30 +732,40 @@ input[type=text], input[type=password] {
    <div class="container">
         <div class="row">
             <div class="col s12">
-                <h1>Modifier la reclamation</h1>
-                <hr>
-                <center>
-                <form class="form-group" method="POST" action="/reclamations/{id}/modifier_reclamation_traitement">
-                    @csrf
+                  <h1>Modifier la réclamation</h1>
+                  @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+                  <form action="/clients/{id}/modifier_client_traitement" method="POST">
+                      @csrf
+                      @method('PUT')
+                      <div class="form-group">
+                          <label for="client">Client</label>
+                          @csrf
+                      <select class="client" id="client" name="client" class="form-control" required>
 
-                    <input type="text" name="id" style="display:none;" value="{{$reclamations->id}}">
-                    <div class="mb-3">
-                        <label for="nom_reclamation" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom_reclamation" name="nom_reclamation" value="{{$reclamations->nom_reclamation}}">
-                        
-                    </div>
-                    <div class="mb-3">
-                        <label for="description_reclamation" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="description_reclamation"name="description_reclamation" value="{{$reclamations->description_reclamation}}">
-                    
-                    </div>
-                    <a href="#" class="btn-etape">Ajouter reclamations </a>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
-                    
-                    <a href="{{ route('reclamations') }}" class="btn btn-danger">Retour</a>
-                </form>
-                </center>
+                        @foreach($clients as $client)
+                            <option value="{{$client->id}}"> {{$clients->nom_client}}</option>
+                        @endforeach
+                      </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="objet_reclamation">Objet</label>
+                          <input type="text" class="form-control" id="objet_reclamation" name="objet_reclamation" value="{{ $reclamations->objet_reclamation }}">
+                      </div>
+                      <div class="form-group">
+                          <label for="description_reclamation">Description</label>
+                          <textarea class="form-control" id="description_reclamation" name="description_reclamation">{{ $reclamations->description_reclamation }}</textarea>
+                      </div>
+                      <button type="submit" class="btn btn-success">Modifier</button>
+                      <a href="{{ route('reclamations') }}" class="btn btn-danger">Retour</a>
+                  </form>
             </div>
         </div>
     </div>

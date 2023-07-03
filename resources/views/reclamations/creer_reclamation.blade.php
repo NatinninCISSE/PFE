@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -743,12 +743,11 @@ input[type=text], input[type=password] {
         <form action="{{ route('reclamations.store') }}" method="POST">
           <div>
               
-              @csrf
-  
-              <select class="dispositif" id="dispositif" name="dispositif" class="form-control" required>
+                @csrf
+                <select class="client" id="client" name="client" class="form-control" required>
 
-                  @foreach($dispositifs as $dispositif)
-                      <option value="{{$dispositif->id}}"> {{$dispositif->nom_dispositif}}</option>
+                  @foreach($clients as $client)
+                      <option value="{{$client->id}}"> {{$client->nom_client}}</option>
                   @endforeach
                 </select>
 

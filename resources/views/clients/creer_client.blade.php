@@ -133,7 +133,7 @@ body {
   height: 50px;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 35px 35px 0 10px var(--white);
+  : 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
 .navigation ul li:hover a::after,
@@ -146,7 +146,7 @@ body {
   height: 50px;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 35px -35px 0 10px var(--white);
+  : 35px -35px 0 10px var(--white);
   pointer-events: none;
 }
 
@@ -249,7 +249,7 @@ body {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  : 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
 .cardBox .card .numbers {
@@ -297,7 +297,7 @@ body {
   min-height: 500px;
   background: var(--white);
   padding: 140px;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  : 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
 
@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -388,7 +388,7 @@ body {
   min-height: 500px;
   padding: 20px;
   background: var(--white);
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  : 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
 .recentCustomers .imgBx {
@@ -732,7 +732,7 @@ input[type=text], input[type=password] {
                 </ul>
             </div>
         @endif
-        <form action="{{ route('clients.store') }}" method="POST">
+        <form action="{{ route('clients.store') }}" method="POST" enctype="multipart/form-data">
         <div>
               
             @csrf
@@ -768,10 +768,16 @@ input[type=text], input[type=password] {
                         <input type="password_client" class="form-control" id="password_client" name="password_client">
                     </div>
                     <div class="mb-3">
+                        <label for="description_dispositif" class="form-label">Description du dispositif</label>
+                        <input type="text" class="form-control" id="description_dispositif" name="description_dispositif">
+                        
+                    </div>
+                    <div class="mb-3">
                         <label for="mail_client" class="form-label">Email</label>
                         <input type="email_client" class="form-control" id="mail_client" name="mail_client">
                         
                     </div>
+                    <input type="file" name="image">
                     <br>
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                     <a href="{{ route('clients') }}" class="btn btn-danger">Retour</a>

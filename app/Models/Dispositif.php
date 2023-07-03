@@ -10,7 +10,7 @@ class Dispositif extends Model
     use HasFactory;
 
 
-    protected $fillable = ['nom_dispositif', 'description_dispositif'];
+    protected $fillable = ['nom_dispositif', 'description_dispositif', 'image_dispositif'];
 
     public function reclamations(){
         return $this->hasMany(Reclamation::class);

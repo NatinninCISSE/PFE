@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom_culture');
             $table->mediumtext('description_culture');
+            $table->string('image_culture');
             $table->timestamps();
         });
     }

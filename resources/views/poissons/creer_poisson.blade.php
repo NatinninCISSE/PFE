@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -739,7 +739,7 @@ input[type=text], input[type=password] {
                 </ul>
             </div>
         @endif
-        <form action="{{ route('poissons.store') }}" method="POST">
+        <form action="{{ route('poissons.store') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="form-group">
                 <label for="nom">Nom</label>
@@ -749,6 +749,7 @@ input[type=text], input[type=password] {
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" name="description" placeholder="Entrez la description du poisson">{{ old('description') }}</textarea>
             </div>
+            <input type="file" name="image">
             <button type="submit" class="btn btn-success">Ajouter</button>
                     <a href="{{ route('poissons') }}" class="btn btn-danger">Retour</a>
         </form>

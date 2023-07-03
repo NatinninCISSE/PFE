@@ -32,11 +32,22 @@ class PoissonController extends Controller
         $request->validate([
             'nom' => 'required',
             'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', 
         ]);
+
+        if($request->hasfile('image'))
+        {
+            $file = $request->file("image");
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/poissons/', $filename);
+            $image ='uploads/poissons/' .$filename;
+        }
 
         $poisson = Poisson::create([
             'nom_poisson' => $request->nom,
             'description_poisson' => $request->description,
+            'image_poisson' => $image, 
         ]);
 
 

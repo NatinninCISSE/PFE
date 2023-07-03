@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -724,7 +724,7 @@ input[type=text], input[type=password] {
                 <h1>Modifier le client</h1>
                 <hr>
                 <center>
-                <form class="form-group" method="POST" action="/clients/{id}/modifier_client_traitement">
+                <form class="form-group" method="POST" action="/clients/{id}/modifier_client_traitement" enctype="multipart/form-data">
                     @csrf
 
                     <input type="text" name="id" style="display:none;" value="{{$clients->id}}">
@@ -758,11 +758,19 @@ input[type=text], input[type=password] {
                         <input type="text" class="form-control" id="password_client" name="password_client" value="{{$clients->password_client}}">
                         
                     </div>
+                    
+                    <div class="mb-3">
+                        <label for="description_dispositif" class="form-label">Description du dispositif</label>
+                        <input type="text" class="form-control" id="description_dispositif" name="description_dispositif">
+                        
+                    </div>
                     <div class="mb-3">
                         <label for="description_client" class="form-label">Description</label>
                         <input type="text" class="form-control" id="description_client"name="description_client" value="{{$clients->description_client}}">
                     
                     </div>
+                    
+                    <input type="file" name="image" value="{{$clients->image_client}}" enctype="multipart/form-data">
                     <br>
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
                     

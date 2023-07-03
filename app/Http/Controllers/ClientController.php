@@ -34,14 +34,28 @@ class ClientController extends Controller
     {
         $request->validate([
             'dispositif' => 'required',
-            'nom_client'=>'required|max:20',
-            'prenom_client'=>'required|max:20',
-            'numero_client'=>'required|max:10',
+            'nom_client'=>'required',
+            'prenom_client'=>'required',
+            'numero_client'=>'required',
             'adresse_client'=>'required',
-            'password_client'=>'required|max:5',
+            'password_client'=>'required|min:5',
+            'description_dispositif'=>'required',
             'mail_client'=>'required',
+            'image'=>'required',
 
         ]);
+
+
+        if($request->hasfile('image'))
+        {
+            $file = $request->file("image");
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('uploads/clients/', $filename);
+            $image ='uploads/clients/' .$filename;
+        }
+
+
         $client = Client::create([
         'dispositif_id' => $request->dispositif,
         'nom_client' => $request->nom_client,
@@ -49,7 +63,9 @@ class ClientController extends Controller
         'numero_client' => $request->numero_client,
         'adresse_client' => $request->adresse_client,
         'password_client' => Hash::make($request->password_client),
+        'description_dispositif' => $request->description_dispositif,
         'mail_client' => $request->mail_client,
+        'image_client' => $image,
         ]);
 
         return redirect()->route('clients', $client->id)->with('success', 'client ajoutée avec succès!');
@@ -83,13 +99,16 @@ class ClientController extends Controller
        public function modifier_client_traitement(Request $request, $id){
             $request->validate([
                 
-                'dispositif' => 'required',
-                'nom_client'=>'required|max:20',
-                'prenom_client'=>'required|max:20',
-                'numero_client'=>'required|max:10',
-                'adresse_client'=>'required',
-                'password_client'=>'required|max:5',
-                'mail_client'=>'required',
+            'dispositif' => 'required',
+            'nom_client'=>'required',
+            'prenom_client'=>'required',
+            'numero_client'=>'required',
+            'adresse_client'=>'required',
+            'password_client'=>'required|min:5',
+            'description_dispositif'=>'required',
+            'mail_client'=>'required',
+            'image'=>'required',
+
             ]);
             $client = Client::find($request->id);
             
@@ -99,7 +118,9 @@ class ClientController extends Controller
             $client->numero_client = $request->input('numero_client');
             $client->adresse_client = $request->input('adresse_client');
             $client->password_client = Hash::make($request->input('password_client'));
+            $client->description_dispositif = $request->input('description_dispositif');
             $client->mail_client = $request->input('mail_client');
+            $client->image = $request->input('image');
             $client->save();
             return redirect()->route('clients', $client->id)->with('status', 'Modification effectuée avec succès');
        }

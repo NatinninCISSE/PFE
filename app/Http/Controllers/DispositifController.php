@@ -27,16 +27,28 @@ class DispositifController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom_dispositif'=>'required',
-            'description_dispositif'=>'required',
-
+            'nom_dispositif' => 'required',
+            'description_dispositif' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', 
         ]);
+    
+        $image = null; // Initialisation de la variable $image à null
+    
+        if ($request->hasFile('image')) {
+            $file = $request->file("image");
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('uploads/dispositifs/', $filename);
+            $image = 'uploads/dispositifs/' . $filename;
+        }
+    
         $dispositif = Dispositif::create([
-        'nom_dispositif' => $request->nom_dispositif,
-        'description_dispositif' => $request->description_dispositif,
+            'nom_dispositif' => $request->nom_dispositif,
+            'description_dispositif' => $request->description_dispositif,
+            'image_dispositif' => $image,
         ]);
-
-        return redirect()->route('dispositifs', $dispositif->id)->with('success', 'dispositif ajoutée avec succès!');
+    
+        return redirect()->route('dispositifs', $dispositif->id)->with('success', 'Dispositif ajouté avec succès!');
     }
 
     public function details_dispositif($id)
@@ -66,11 +78,23 @@ class DispositifController extends Controller
             $request->validate([
                 'nom_dispositif'=>'required',
                 'description_dispositif'=>'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif', 
             ]);
+
+
+            if ($request->hasFile('image')) {
+                $file = $request->file("image");
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('uploads/dispositifs/', $filename);
+                $image = 'uploads/dispositifs/' . $filename;
+            }
+
             $dispositif = Dispositif::find($request->id);
 
             $dispositif->nom_dispositif = $request->input('nom_dispositif');
             $dispositif->description_dispositif = $request->input('description_dispositif');
+            $dispositif->image_dispositif = $request->input('image_dispositif');
             $dispositif->save();
             return redirect()->route('dispositifs', $dispositif->id)->with('status', 'Modification effectuée avec succès');
        }

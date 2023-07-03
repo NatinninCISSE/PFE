@@ -334,7 +334,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -747,6 +747,10 @@ input[type=text], input[type=password] {
                       <h4>Nom de la tache :  <span class="h4">{{  $task->nom_tache }}</span></h4>
 
                       <h4>Description de la tache : <span class="h4">{{ $task->description_tache }}</span></h4>
+                      
+                      <div>
+                      <img src="{{ env('URL_APP').$culture->image_culture }}" width="100px" height="100px">
+                      </div>
 
                     </div>
                     <a href="{{ route('taches') }}" class="btn btn-danger">Retour</a>

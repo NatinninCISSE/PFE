@@ -10,6 +10,7 @@ use App\Http\Controllers\CultureController;
 use App\Http\Controllers\PoissonController;
 use App\Http\Controllers\DispositifController;
 use App\Http\Controllers\ReclamationController;
+use App\Http\Controllers\PosteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,16 @@ Route::delete('/steps/{id}', [StepController::class, 'destroy'])->name('steps.de
 
 
 
+Route::get('/conseils', [ConseilController::class, 'liste_conseil'])->name('conseils');
+Route::get('/conseils/{id}/creer_conseil', [ConseilController::class, 'creer_conseil'])->name('conseils.creer_conseil');
+Route::post('/conseils', [ConseilController::class, 'store'])->name('conseils.store');
+Route::get('/conseils/{id}/details_conseil', [ConseilController::class, 'details_conseil'])->name('conseils.details_conseil');
+Route::get('/conseils/{id}/modifier_conseil', [ConseilController::class, 'modifier_conseil'])->name('conseils.modifier_conseil');
+Route::post('/conseils/{id}/modifier_conseil_traitement', [ConseilController::class, 'modifier_conseil_traitement'])->name('conseils.modifier_conseil_traitement');
+Route::delete('/conseils/{id}', [ConseilController::class, 'destroy'])->name('conseils.destroy');
+
+
+
 Route::get('/reclamations', [ReclamationController::class, 'liste_reclamation'])->name('reclamations');
 Route::get('/reclamations/creer_reclamation', [ReclamationController::class, 'creer_reclamation'])->name('reclamations.creer_reclamation');
 Route::post('/reclamations', [ReclamationController::class, 'store'])->name('reclamations.store');
@@ -88,6 +99,16 @@ Route::get('/reclamations/{id}/details_reclamation', [ReclamationController::cla
 Route::get('/reclamations/{id}/modifier_reclamation', [ReclamationController::class, 'modifier_reclamation'])->name('reclamations.modifier_reclamation');
 Route::post('/reclamations/{id}/modifier_reclamation_traitement', [ReclamationController::class, 'modifier_reclamation_traitement'])->name('reclamations.modifier_reclamation_traitement');
 Route::delete('/reclamations/{id}', [ReclamationController::class, 'destroy'])->name('reclamations.destroy');
+
+
+
+Route::get('/postes', [PosteController::class, 'liste_poste'])->name('postes');
+Route::get('/postes/creer_poste', [PosteController::class, 'creer_poste'])->name('postes.creer_poste');
+Route::post('/postes', [PosteController::class, 'store'])->name('postes.store');
+Route::get('/postes/{id}/details_poste', [PosteController::class, 'details_poste'])->name('postes.details_poste');
+Route::get('/postes/{id}/modifier_poste', [PosteController::class, 'modifier_poste'])->name('postes.modifier_poste');
+Route::post('/postes/{id}/modifier_poste_traitement', [PosteController::class, 'modifier_poste_traitement'])->name('postes.modifier_poste_traitement');
+Route::delete('/postes/{id}', [PosteController::class, 'destroy'])->name('postes.destroy');
 
 
 

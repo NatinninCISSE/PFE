@@ -295,7 +295,7 @@ body {
   display: grid;
   min-height: 500px;
   background: var(--white);
-  padding: 140px;
+  padding: 150px 70px 70px 70px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
@@ -334,12 +334,12 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
 .details .recentOrders table tr td {
-  padding: 25px;
+  padding: 38px;
 }
 
 .status.delivered {
@@ -619,8 +619,6 @@ input[type=text], input[type=password] {
   color: var(--blue);
 }
 
-
-
     </style>
 
 
@@ -669,11 +667,11 @@ input[type=text], input[type=password] {
                 </li>
 
                 <li>
-                    <a href="{{ route('etapes') }}">
+                    <a href="{{ route('cultures') }}">
                         <span class="icon">
                         <ion-icon name="leaf"></ion-icon>                            
                         </span>
-                        <span class="title">Gérer les etapes </span>
+                        <span class="title">Gérer les cultures </span>
                     </a>
                 </li>
 
@@ -740,20 +738,25 @@ input[type=text], input[type=password] {
             
             <!-- ================ Order Details List ================= -->
 
-    <div class="details">
+          <center>
+            <div class="details">
                 <div class="recentOrders">
 
                     <div class="container1">
-                      <h4>Nom de l'tache :  <span class="h4">{{  $tache->nom_tache }}</span></h4>
+                      <h4> <span class="h4"> Nom de la tache : </span> {{  $tache->nom_tache }}</h4>
 
-                      <h4>Description de l'tache : <span class="h4">{{ $tache->description_tache }}</span></h4>
+                      <h4> <span class= "h4"> Description de la tache :</span> {{ $tache->description_tache }}</h4>
+                      
+                      <div>
+                      <img src="{{ env('URL_APP').$tache->image_tache }}" width="100px" height="100px">
+                      </div>
 
                     </div>
                     
                     <a href="{{ route('taches') }}" class="btn btn-danger">Retour</a>
  
                 </div>
-
+            </center>
 
     
 

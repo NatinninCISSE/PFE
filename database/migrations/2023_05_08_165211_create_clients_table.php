@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('numero_client',15);
             $table->string('adresse_client');
             $table->string('password_client');
-            $table->string('mail_client')->unique();
+            $table->string('description_dispositif');
+            $table->string('mail_client');
+            $table->string('image_client');
             $table->foreignId('dispositif_id')->constrained()->onDelete('cascade');
             
         });

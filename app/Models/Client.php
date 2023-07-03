@@ -10,7 +10,7 @@ class Client extends Model
     use HasFactory;
 
 
-    protected $fillable = ['dispositif_id','nom_client','prenom_client','numero_client','adresse_client','password_client','mail_client'];
+    protected $fillable = ['dispositif_id','nom_client','prenom_client','numero_client','adresse_client','password_client','description_dispositif','mail_client', 'image_client'];
 
 
     public function reclamations(){
@@ -26,7 +26,8 @@ class Client extends Model
         return $this->belongsToMany(Culture::class, 'client_culture');
     }
 
-    public function postes(){
+    public function postes()
+    {
         return $this->hasMany(Poste::class);
     }
 

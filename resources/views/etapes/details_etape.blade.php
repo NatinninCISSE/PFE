@@ -334,7 +334,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -747,6 +747,11 @@ input[type=text], input[type=password] {
                       <h4><span class="h4">Nom de l'étape : </span>  {{  $etape->nom_etape }}</h4>
 
                       <h4><span class="h4">Description de l'étape : </span>{{ $etape->description_etape }}</h4>
+                      <center>
+                      <div>
+                      <img src="{{ env('URL_APP').$etape->image_etape }}" width="100px" height="100px">
+                      </div>
+                      </center>
 
                       <h2>Les taches de l'étape </h2>
 
@@ -768,6 +773,7 @@ input[type=text], input[type=password] {
                                 <td>{{ $tache->id }}</td>
                                 <td>{{ $tache->nom_tache }}</td>
                                 <td>{{ $tache->description_tache }}</td>
+                                
                                 <td class="bouton">
                                   
                                   <a href="{{ route('taches.details_tache', $tache->id) }}" class="btn-voir" class="bouton"><ion-icon name="eye-outline"></ion-icon></a>

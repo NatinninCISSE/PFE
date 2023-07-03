@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -614,7 +614,7 @@ color:#1C9521;
                 <li>
                     <a href="#">
                         <span class="icon">
-                        <img src="{{ asset('images/AISA.png') }}" alt="Logo Aisa">
+                        <img src="{{ asset('images/Logo.png') }}" alt="Logo Aisa">
                         </span>
                         <span class="title">Aisa</span>
                     </a>

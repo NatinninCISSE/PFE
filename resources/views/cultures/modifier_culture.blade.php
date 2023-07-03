@@ -341,7 +341,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -738,7 +738,7 @@ input[type=text], input[type=password] {
                 <form class="form-group" method="POST" action="/cultures/{id}/modifier_culture_traitement">
                     @csrf
 
-                    <input type="text" name="id" style="display:none;" value="{{$cultures->id}}">
+                    <input type="text" name="id" style="display:none;" value="{{$cultures->id}}" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="nom_culture" class="form-label">Nom</label>
                         <input type="text" class="form-control" id="nom_culture" name="nom_culture" value="{{$cultures->nom_culture}}">
@@ -749,6 +749,7 @@ input[type=text], input[type=password] {
                         <input type="text" class="form-control" id="description_culture"name="description_culture" value="{{$cultures->description_culture}}">
                     
                     </div>
+                    <input type="file" name="image" value="{{$cultures->image_culture}}" enctype="multipart/form-data">
                     <br>
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
                     

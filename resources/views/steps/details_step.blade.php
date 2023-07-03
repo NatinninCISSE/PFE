@@ -334,7 +334,7 @@ body {
 .details .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+/ {
   background: var(--blue2);
   color: var(--white);
 }
@@ -744,9 +744,14 @@ input[type=text], input[type=password] {
                 <div class="recentOrders">
 
                     <div class="container1">
-                      <h4><span class="h4">Nom de l'étape : </span>  {{  $step->nom_etape }}</h4>
+                      <h4> <span class="h4">Nom de l'étape : </span>   {{  $step->nom_etape }}</h4>
 
                       <h4><span class="h4">Description de l'étape : </span>{{ $step->description_etape }}</h4>
+
+                      
+                      <div>
+                      <img src="{{ env('URL_APP').$culture->image_culture }}" width="100px" height="100px">
+                      </div>
 
                       <h2>Les taches de l'étape </h2>
 
